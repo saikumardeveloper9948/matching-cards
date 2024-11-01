@@ -358,7 +358,7 @@
           SCORE:
           <span id="score">0</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TIME:<span
             id="time"
-            >01:20</span
+            >01:10</span
           >
         </h1></span
       >
@@ -469,7 +469,7 @@ function blockCards() {
 }
 
 function time() {
-    let secs =20;
+    let secs =10;
     let min  = 1;
 
     // Start the timer interval
@@ -544,7 +544,7 @@ function shuffle() {
 
   function resetgame(){
     clearInterval(timeInterval);
-    document.querySelector("#time").innerHTML = "01:20";
+    document.querySelector("#time").innerHTML = "01:10";
     firstClick=false;
 
     score = 0;
