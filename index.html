@@ -1,478 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
-			integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <title>matching-cards-score1</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Game</title>
     <style>
-      body {
-        padding: 0;
-        margin: 0;
-        /* background-color: aquamarine; */
-      }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+    
+        .head {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 100vh;
+        }
+        .head::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-image: linear-gradient(#FFF100, #00FF9C);
+            background-repeat: no-repeat;
+            background-size: cover;
+            z-index: -1;
+            filter: blur(5px);
+        }
+        .content {
+            text-align: center;
+            margin-top: 30vh;
+            position: relative;
+            /* color: #fff; */
+        }
+        .content h1 {
+            font-size: 5rem; /* Default font size */
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            transform: translate(-20px, -20px); /* Initial position */
+            transition: transform 0.5s ease; 
+           
+        }
+        .content h1.loaded {
+            transform: translate(0, 0); /* Final position */
+        }
       
-      .outer-card {
-        height: 100px;
-        width: 80px;
-        background: transparent;
-        perspective: 100px;
-        float: left;
-        /* margin-left: 40px; */
-        /* margin-top: 20px; */
-      }
-      .inner_card {
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        transform-style: preserve-3d;
-        transition: all 0.5s ease;
-      }
-      .front,
-      .back {
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        
-        backface-visibility: hidden;
-        background: linear-gradient(
-          50deg,
-          rgb(235, 41, 199) 0%,
-          yellow 50%,
-          blue 100%
-        );
-        border-radius: 10px;
-        box-shadow: 0 0 0 10px  rgba(0, 0, 0, 0.2);
-      }
-      .back {
-        transform: rotateY(180deg);
-      }
-      #score_board {
-        height: 85px;
-        width: 450px;
-        border: 4px solid black;
-        margin: auto;
-        text-align: center;
-        margin-top: 15px;
-        font-family:"Times New Roman";
-      }
-      img {
-        width: 100%;
-        height: 100%;
-        border-radius: 10px;
-        box-shadow: 0 0 30px red;
-      }
-      #head1{
-        text-align: center;
-        font-family: cursive;
-      }
-      table{
-        margin-left: auto;  /* Automatically adjust left margin */
-        margin-right: auto; /* Automatically adjust right margin */
-        border-collapse: collapse; /*Optional: for better border styling */
-      }
-      td{
-        padding: 15px;
-        
-        
-      }
-
-
-
-      .alert-box {
-  position: fixed;
-  top: 30%;
-  left: 50%;
-  font-size: 50px;
-  transform: translateX(-50%);
-  background-color: white;
-  border-radius: 20px;
-  box-shadow: inset;
-  padding: 10px;
-  z-index: 1000;
-  display: none;
-  padding: 3%;
-  font-family: 'Times New Roman', Times, serif;
-  color: #0e0f10;
-  background-color:#48FF00;
-}
-
-.alert-box.show {
-  display: block;
-}
-#reset{
-  font-size: 20px;
-  background-color: rgb(21, 236, 5);
-  border: none;             
-    padding: 3px 7px;            
-    cursor: pointer; 
-    border-radius: 10px ; 
-    color: rgb(39, 35, 29);
-  background-size: 100%; 
-  border-radius: 10px; 
- 
-    
-}
-
-
-.blocked {
-    pointer-events: none; /* Disable pointer events */
-    opacity: 0.7; /* Optional: make cards visually appear blocked */
-}
-
-
-#level2{
-  display: none;
-  font-size: 30px;
-  transform: translate(45px, -380px);
-  padding: 10px 15px;
-  border-radius: 50%;
-  background-color: rgb(212, 212, 244);
-  color: #10140a;
-  box-shadow: #ff4000 10px  10px 30px 10px;
-  border: none;
-
-
-
-}
-
-.one{
-  color: red;
-
-}
-.two{
-  color: blue;
-}
-.three{
-  color: #236409;
-}
-
-
-    </style>
-  <head>
-  <body>
-    <h1 id="head1" class="game1"><b><span class="one">Matching</span> <span class="two">Cards</span> <span class="three">Game</span></b></h1>
-    <h2 id="head1">Level - 1</h2>
-
- 
-
-    <table>
-      <tr>
-   <td>
-    <div id="container">
-      <div class="outer-card">
-        <div class="inner_card">
-          <div class="front"></div>
-          <div class="back"><img src="" alt="" /></div>
-        </div>
-      </div>
-    </td>
-    <td>
-      <div class="outer-card">
-        <div class="inner_card">
-          <div class="front"></div>
-          <div class="back"><img src="" alt="" /></div>
-        </div>
-      </div>
-    </td>
-    <td>
-      <div class="outer-card">
-        <div class="inner_card">
-          <div class="front"></div>
-          <div class="back"><img src="" alt="" /></div>
-        </div>
-      </div>
-    </td>
-    <td>
-      <div class="outer-card">
-        <div class="inner_card">
-          <div class="front"></div>
-          <div class="back"><img src="" alt="" /></div>
-        </div>
-      </div>
-    </td> 
-    </tr>
-
-    <tr>
-      <td>
-       <div id="container">
-         <div class="outer-card">
-           <div class="inner_card">
-             <div class="front"></div>
-             <div class="back"><img src="" alt="" /></div>
-           </div>
-         </div>
-       </td>
-       <td>
-         <div class="outer-card">
-           <div class="inner_card">
-             <div class="front"></div>
-             <div class="back"><img src="" alt="" /></div>
-           </div>
-         </div>
-       </td>
-       <td>
-         <div class="outer-card">
-           <div class="inner_card">
-             <div class="front"></div>
-             <div class="back"><img src="" alt="" /></div>
-           </div>
-         </div>
-       </td>
-       <td>
-         <div class="outer-card">
-           <div class="inner_card">
-             <div class="front"></div>
-             <div class="back"><img src="" alt="" /></div>
-           </div>
-         </div>
-       </td> 
-       </tr>
-       <tr>
-        <td>
-         <div id="container">
-           <div class="outer-card">
-             <div class="inner_card">
-               <div class="front"></div>
-               <div class="back"><img src="" alt="" /></div>
-             </div>
-           </div>
-         </td>
-         <td>
-           <div class="outer-card">
-             <div class="inner_card">
-               <div class="front"></div>
-               <div class="back"><img src="" alt="" /></div>
-             </div>
-           </div>
-         </td>
-         <td>
-           <div class="outer-card">
-             <div class="inner_card">
-               <div class="front"></div>
-               <div class="back"><img src="" alt="" /></div>
-             </div>
-           </div>
-         </td>
-         <td>
-           <div class="outer-card">
-             <div class="inner_card">
-               <div class="front"></div>
-               <div class="back"><img src="" alt="" /></div>
-             </div>
-           </div>
-         </td> 
-         </tr>
-  </table>
-
-
-  <!-- <img src="images/laptop.jpg" id="timer-image"/> -->
-
-    <div id="score_board">
-      <span
-        ><h1>
-          SCORE:
-          <span id="score">0</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TIME:<span
-            id="time"
-            >00:00</span
-          >
-        </h1></span
-      >
-      <!-- &nbsp; A non-breaking space is a space that will not break into a new line -->
-      <br /><br />
-      <button id="reset" type="reset">Reset</button> 
-      <!-- <button id="pause" type="button"> pause</button> -->
-      <!-- <button  id="start" type="button">Start Over</button>  -->
-      <button id="level2"> Click here for Next level..</button>
-     
        
-    </div>
 
-    <div id="custom-alert" class="alert-box">
-      <span id="alert-message"></span>
-    </div>
-     
-  <script>
-      let level2=document.querySelector("#level2")
-      level2.addEventListener("click",()=>{
-        location.href="matchingcards2.html";
-      })
-
-
-    let cards = document.querySelectorAll(".inner_card");
-let firstClick = false;
-let counter = 0;
-let cardpairs = [];
-let score = 0; 
-let timeInterval; 
-
-cards.forEach((card) => {
-    card.state = "unclicked";
-    card.addEventListener("click", () => {
-        if (!firstClick) {
-            time(); 
+        .content button {
+            font-size: 2rem; /* Default font size */
+            border: none;
+            border-radius: 25px;
+            padding: 15px 30px;
+            background-color: #F9DBBA;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            color: #333;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
         }
-        firstClick = true;
-
-        if (card.state === "unclicked") {
-            card.style.transform = "rotateY(180deg)";
-            card.state = "clicked";
-            counter++;
-            cardpairs.push(card);
-            check();
-        } else if (card.state === "clicked") {
-            card.style.transform = "rotateY(0deg)";
-            card.state = "unclicked";
-            counter--;
-            cardpairs = [];
+        .content button:hover {
+            background-color: #C8A1E0;
+            color: #fff;
+            transform: translateY(-15px);
         }
-    });
-});
-
-shuffle();
-
-function check() {
-    if (counter == 2) {
-        if (
-            cardpairs[0].querySelector("img").src ===
-            cardpairs[1].querySelector("img").src
-        ) {
-            matched();
-        } else {
-            unmatched(cardpairs[0], cardpairs[1]);
+        a {
+            text-decoration: none;
+            /* color: inherit;  */
         }
-    }
-}
+        
+      
 
-function matched() {
-    cardpairs[0].state = "blocked";
-    cardpairs[1].state = "blocked";
-    counter = 0;
-    cardpairs = [];
-    score++; 
-
-    document.querySelector("#score").innerHTML = score;
-
-
-
-}
-
-function unmatched(x, y) {
-    setTimeout(() => {
-        x.style.transform = "rotateY(0deg)";
-        y.style.transform = "rotateY(0deg)";
-    }, 750);
-    cardpairs[0].state = "unclicked";
-    cardpairs[1].state = "unclicked";
-    counter = 0;
-    cardpairs = [];
-}
-
-function showCustomAlert(message) {
-             const customAlert = document.getElementById("custom-alert");
-             const alertMessage = document.getElementById("alert-message");
-           
-             alertMessage.innerText = message;
-             customAlert.classList.add("show");
-           
-             setTimeout(() => {
-               customAlert.classList.remove("show");
-             }, 4000);
-}
-
-function blockCards() {
-    const cards = document.querySelectorAll(".inner_card");
-    cards.forEach(card => {
-        card.classList.add("blocked"); // Add the blocked class to each card
-    });
-}
-
-function time() {
-    let secs = 30;
-    // const timerImage = document.getElementById("timer-image"); // Get the image element
-    // Start the timer interval
-    timeInterval = setInterval(() => {
-        secs--;
-        let SS = secs < 10 ? `0${secs}` : `${secs}`;
-            document.querySelector("#time").innerHTML = `00:${SS}`;
-        if (  secs <=0 || score == 6 ) { 
-          clearInterval(timeInterval);
-          // document.getElementById("time").innerHTML="00:00"; 
-          if(score == 6){ 
-            // Usage
-            showCustomAlert("congratulations....!"); 
-            document.querySelector("#level2").style.display="block"
-            // document.querySelector("#timer-image").style.display="block";       
-            }
-            else  {
-              showCustomAlert("Better luck next time..! "); 
-            }
-            blockCards()
-            time.state = "blocked";
-          }
-          }, 2000);
-  }
-  
-
-function shuffle() {
-    let images = document.querySelectorAll("img");
-    let srcs = [
-        "images/GIRL.webp",
-        "images/man.jpeg",
-        "images/monkey.jpg",
-        "images/skull.png",
-        "images/sun_rise.jpg",
-        "images/Speech-50.jpg",
-        "images/man.jpeg",
-        "images/GIRL.webp",
-        "images/Speech-50.jpg",
-        "images/sun_rise.jpg",
-        "images/skull.png",
-        "images/monkey.jpg",
-    ];
-
-    for (let i = srcs.length - 1; i > 0; i--) {
-        let j = Math.floor(Math.random() * (i + 1));
-        let temp = srcs[i];
-        srcs[i] = srcs[j];
-        srcs[j] = temp;
-    }
-
-    for (let i = 0; i < images.length; i++) {
-        images[i].src = srcs[i];
-    }
-} 
-
-
-
-  let reset=document.getElementById("reset");
-  reset.addEventListener("click", resetgame)
-
-  function resetgame(){
-    //reset time
-    clearInterval(timeInterval);
-    document.querySelector("#time").innerHTML = "00:30";
-    firstClick=false;
-
-    //reset score
-    score = 0;
-    document.querySelector("#score").innerHTML = `${score}`
     
-    // cards state
-    
-    cards.forEach((card)=>{
-      card.state = "unclicked";
-      card.style.transform = "rotateY(0deg)";
-       card.classList.remove("blocked"); // remove the blocked class to enable interaction
-    }) 
+        @media (max-width: 1200px) {
+            .content h1 {
+                font-size: 4rem; /* Adjust font size for medium screens */
+            }
+            .content button {
+                font-size: 1.5rem; /* Adjust button font size */
+                padding: 12px 25px; /* Adjust padding */
+            }
+        }
 
-    document.querySelector("#level2").style.display="none";
-  }
-  
-  </script>
-  <!-- <img src="./images/congratulations.gif" alt=""> -->
-  </body>
-</html>
+        @media (max-width: 992px) {
+            .content h1 {
+                font-size: 3rem; /* Further adjust font size for smaller screens */
+            }
+            .content button {
+                font-size: 1.2rem; /* Further adjust button font size */
+                padding: 10px 20px; /* Further adjust padding */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                margin-top: 20vh; 
+            }
+            .content h1 {
+                font-size: 2.5rem; 
+            }
+            .content button {
+                font-size: 1rem; 
+                padding: 8px 15px; 
+            }
+        }
+
+        @media (max-width: 576px) {
+            .content h1 {
+                font-size: 2rem;
+            }
+            .content button {
+                font-size: 0.9rem; 
+                padding: 6px 10px; 
+            }
+        }
+      
+    </style>
+</head>
+<body>
+    <div class="head">
+        <div class="content">
+            <h1>Let's Start the Game</h1>
+            <button><a href="matchingcards1.html">CLICK HERE</a></button>
+        </div>
+    </div>
+</body>

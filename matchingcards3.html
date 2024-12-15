@@ -9,7 +9,9 @@
       body {
         padding: 0;
         margin: 0;
-        /* background-color: aquamarine; */
+       
+ 
+        background: conic-gradient(from 120deg, #ff7e5f, #6847fc, #FFE893);
       }
      
       .outer-card {
@@ -36,9 +38,9 @@
         backface-visibility: hidden;
         background: linear-gradient(
           50deg,
-          rgb(235, 41, 199) 0%,
-          yellow 50%,
-          blue 100%
+          rgb(112, 241, 222) 0%,
+          rgb(250, 191, 14) 50%,
+          rgb(204, 231, 67) 100%
         );
         border-radius: 10px;
         box-shadow: 0 0 0 10px  rgba(0, 0, 0, 0.2);
@@ -52,6 +54,8 @@
         border: 2px solid black;
         margin: auto;
         text-align: center;
+        border-radius: 20px;
+        background-color: aliceblue;
         margin-top: 15px;
         font-family:"Times New Roman";
       }
@@ -97,14 +101,16 @@
 }
 #reset{
     font-size: 20px;
-    background-color: rgb(162, 162, 204);
+    background-color: yellow;
     border: none;             
     padding: 3px 7px;            
     cursor: pointer; 
+    
     border-radius: 10px ; 
+    color: white;
     color: rgb(39, 35, 29);
     background-size: 100%; 
-    border-radius: 10px; 
+    
  
     
 }
@@ -358,7 +364,7 @@
           SCORE:
           <span id="score">0</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TIME:<span
             id="time"
-            >01:10</span
+            >01:02</span
           >
         </h1></span
       >
@@ -469,7 +475,7 @@ function blockCards() {
 }
 
 function time() {
-    let secs =10;
+    let secs =2;
     let min  = 1;
 
     // Start the timer interval
@@ -490,7 +496,7 @@ function time() {
             document.querySelector("#preview").style.display="block"
             }
             else  {
-              showCustomAlert("Better luck next time..! "); 
+              showCustomAlert("Well, game don’t go as planned! Better luck next time..! "); 
             }
             blockCards(); 
             time.state = "blocked";
@@ -544,7 +550,7 @@ function shuffle() {
 
   function resetgame(){
     clearInterval(timeInterval);
-    document.querySelector("#time").innerHTML = "01:10";
+    document.querySelector("#time").innerHTML = "01:02";
     firstClick=false;
 
     score = 0;
