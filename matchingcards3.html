@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,18 +8,19 @@
       body {
         padding: 0;
         margin: 0;
-       
- 
-        background: conic-gradient(from 120deg, #ff7e5f, #6847fc, #FFE893);
+
+        background: conic-gradient(from 120deg, #ff7e5f, #6847fc, #ffe893);
+        background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center; 
       }
-     
+
       .outer-card {
         height: 90px;
         width: 70px;
         background: transparent;
         perspective: 100px;
         float: left;
-      
       }
       .inner_card {
         position: absolute;
@@ -34,7 +34,7 @@
         position: absolute;
         height: 100%;
         width: 100%;
-        
+
         backface-visibility: hidden;
         background: linear-gradient(
           50deg,
@@ -43,21 +43,26 @@
           rgb(204, 231, 67) 100%
         );
         border-radius: 10px;
-        box-shadow: 0 0 0 10px  rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.2);
       }
       .back {
         transform: rotateY(180deg);
       }
       #score_board {
-        height: 85px;
-        width: 450px;
+        width: 50%;      
         border: 2px solid black;
         margin: auto;
         text-align: center;
         border-radius: 20px;
         background-color: aliceblue;
         margin-top: 15px;
-        font-family:"Times New Roman";
+        font-family: "Times New Roman";
+      }
+      .btnsreset{
+        display: flex;
+        justify-content: center;
+        margin:30px;
+        gap: 30px;
       }
       img {
         width: 100%;
@@ -65,183 +70,164 @@
         border-radius: 10px;
         box-shadow: 0 0 30px red;
       }
-      #head1{
+      #head1 {
         text-align: center;
       }
-      table{
-        margin-left: auto;  /* Automatically adjust left margin */
-        margin-right: auto; /* Automatically adjust right margin */
-        border-collapse: collapse; /*Optional: for better border styling */
+      table {
+        margin-left: auto; 
+        margin-right: auto;
+        border-collapse: collapse; 
       }
-      td{
+      td {
         padding: 11px;
       }
 
-
       .alert-box {
         position: fixed;
-  top: 30%;
-  left: 50%;
-  font-size: 40px;
-  transform: translateX(-50%);
-  background-color: white;
-  border-radius: 20px;
-  box-shadow: inset;
-  padding: 10px;
-  z-index: 1000;
-  display: none;
-  padding: 3%;
-  font-family: 'Times New Roman', Times, serif;
-  color: #0e0f10;
-  background-color:#48FF00;
-}
+        top: 30%;
+        left: 50%;
+        font-size: 40px;
+        transform: translateX(-50%);
+        background-color: white;
+        border-radius: 20px;
+        box-shadow: inset;
+        padding: 10px;
+        z-index: 1000;
+        display: none;
+        padding: 3%;
+        font-family: "Times New Roman", Times, serif;
+        color: #0e0f10;
+        background-color: #48ff00;
+      }
 
-.alert-box.show {
-  display: block;
-}
-#reset{
-    font-size: 20px;
-    background-color: yellow;
-    border: none;             
-    padding: 3px 7px;            
-    cursor: pointer; 
-    
-    border-radius: 10px ; 
-    color: white;
-    color: rgb(39, 35, 29);
-    background-size: 100%; 
-    
- 
-    
-}
+      .alert-box.show {
+        display: block;
+      }
+      #reset {
+        font-size: 20px;
+        background-color: yellow;
+        border: none;
+        padding: 3px 7px;
+        cursor: pointer;
 
-.blocked {
-    pointer-events: none; /* Disable pointer events */
-    opacity: 0.5; /* Optional: make cards visually appear blocked */
-}
+        border-radius: 10px;
+        color: white;
+        color: rgb(39, 35, 29);
+        background-size: 100%;
+      }
 
-.one{
-  color: red;
+      .blocked {
+        pointer-events: none;
+        opacity: 0.5; 
+      }
 
-}
-.two{
-  color: blue;
-}
-.three{
-  color: #236409;
-}
+      .one {
+        color: red;
+      }
+      .two {
+        color: blue;
+      }
+      .three {
+        color: #236409;
+      }
 
-#preview{
-  display: none;
-  font-size: 20px;
-  border-radius: 10px;
-  border: none;
-  margin-top: -25px;
-  margin-left: -30px;
-  padding: 5px 10px;
-  background-color: red;
-  color: white;
-}
+      #preview {
+        display: none;
+        font-size: 20px;
+        border-radius: 10px;
+        border: none;
+     
+        padding: 5px 10px;
+        background-color: red;
+        color: white;
+      }
 
+     
+
+      @media (max-width: 768px) {
+        body {
+          background: conic-gradient(from 120deg, #ff7e5f, #6847fc, #ffe893);
+        }
+
+        #score_board {
+          width: 50%; 
+          font-size: 16px;
+        }
+
+        .outer-card {
+          height: 70px; 
+          width: 50px; 
+        }
+
+        .inner_card {
+          height: 100%;
+          width: 100%;
+        }
+
+        img {
+          border-radius: 5px; 
+        }
+
+        #head1 {
+          font-size: 24px;
+        }
+
+        /* table {
+          width: 100%;
+        } */
+
+      
+
+        #reset,
+        #preview {
+          font-size: 16px; 
+          padding: 5px 10px;
+        }
+
+        .alert-box {
+          font-size: 30px; 
+          padding: 5px; 
+        }
+      }
+
+      @media (max-width: 480px) {
+      
+        #score_board {
+          font-size: 14px; 
+        }
+
+        .outer-card {
+          height: 60px;
+          width: 30px;
+        }
+
+        #head1 {
+          font-size: 20px;
+        }
+
+        #reset,
+        #preview {
+          font-size: 14px;
+          padding: 4px 8px;
+        }
+
+        .alert-box {
+          font-size: 24px; 
+        }
+      }
     </style>
   </head>
   <body>
-    <h1 id="head1" class="game1"><b><span class="one">Matching</span> <span class="two">Cards</span> <span class="three">Game</span></b></h1>
+    <h1 id="head1" class="game1">
+      <b
+        ><span class="one">Matching</span> <span class="two">Cards</span>
+        <span class="three">Game</span></b
+      >
+    </h1>
     <h2 id="head1">Level - 3</h2>
     <table id="table">
       <tr>
-   <td>
-    <div id="container">
-      <div class="outer-card">
-        <div class="inner_card">
-          <div class="front"></div>
-          <div class="back"><img src="" alt="" /></div>
-        </div>
-      </div>
-    </td>
-    <td>
-      <div class="outer-card">
-        <div class="inner_card">
-          <div class="front"></div>
-          <div class="back"><img src="" alt="" /></div>
-        </div>
-      </div>
-    </td>
-    <td>
-      <div class="outer-card">
-        <div class="inner_card">
-          <div class="front"></div>
-          <div class="back"><img src="" alt="" /></div>
-        </div>
-      </div>
-    </td>
-    <td>
-      <div class="outer-card">
-        <div class="inner_card">
-          <div class="front"></div>
-          <div class="back"><img src="" alt="" /></div>
-        </div>
-      </div>
-    </td> 
-    <td>
-        <div class="outer-card">
-          <div class="inner_card">
-            <div class="front"></div>
-            <div class="back"><img src="" alt="" /></div>
-          </div>
-        </div>
-      </td> 
-      <td>
-        <div class="outer-card">
-          <div class="inner_card">
-            <div class="front"></div>
-            <div class="back"><img src="" alt="" /></div>
-          </div>
-        </div>
-      </td> 
-    </tr>
-    <tr>
-        <td>
-         <div id="container">
-           <div class="outer-card">
-             <div class="inner_card">
-               <div class="front"></div>
-               <div class="back"><img src="" alt="" /></div>
-             </div>
-           </div>
-         </td>
-         <td>
-           <div class="outer-card">
-             <div class="inner_card">
-               <div class="front"></div>
-               <div class="back"><img src="" alt="" /></div>
-             </div>
-           </div>
-         </td>
-         <td>
-           <div class="outer-card">
-             <div class="inner_card">
-               <div class="front"></div>
-               <div class="back"><img src="" alt="" /></div>
-             </div>
-           </div>
-         </td>
-         <td>
-           <div class="outer-card">
-             <div class="inner_card">
-               <div class="front"></div>
-               <div class="back"><img src="" alt="" /></div>
-             </div>
-           </div>
-         </td> 
-         <td>
-            <div class="outer-card">
-              <div class="inner_card">
-                <div class="front"></div>
-                <div class="back"><img src="" alt="" /></div>
-              </div>
-            </div>
-          </td> 
+        <div id="container">
           <td>
             <div class="outer-card">
               <div class="inner_card">
@@ -249,321 +235,408 @@
                 <div class="back"><img src="" alt="" /></div>
               </div>
             </div>
-          </td> 
-         </tr>
-         
-     
-    <tr>
-      <td>
-       <div id="container">
-         <div class="outer-card">
-           <div class="inner_card">
-             <div class="front"></div>
-             <div class="back"><img src="" alt="" /></div>
-           </div>
-         </div>
-       </td>
-       <td>
-         <div class="outer-card">
-           <div class="inner_card">
-             <div class="front"></div>
-             <div class="back"><img src="" alt="" /></div>
-           </div>
-         </div>
-       </td>
-       <td>
-         <div class="outer-card">
-           <div class="inner_card">
-             <div class="front"></div>
-             <div class="back"><img src="" alt="" /></div>
-           </div>
-         </div>
-       </td>
-       <td>
-         <div class="outer-card">
-           <div class="inner_card">
-             <div class="front"></div>
-             <div class="back"><img src="" alt="" /></div>
-           </div>
-         </div>
-       </td> 
-       <td>
-        <div class="outer-card">
-          <div class="inner_card">
-            <div class="front"></div>
-            <div class="back"><img src="" alt="" /></div>
-          </div>
+          </td>
+          <td>
+            <div class="outer-card">
+              <div class="inner_card">
+                <div class="front"></div>
+                <div class="back"><img src="" alt="" /></div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="outer-card">
+              <div class="inner_card">
+                <div class="front"></div>
+                <div class="back"><img src="" alt="" /></div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="outer-card">
+              <div class="inner_card">
+                <div class="front"></div>
+                <div class="back"><img src="" alt="" /></div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="outer-card">
+              <div class="inner_card">
+                <div class="front"></div>
+                <div class="back"><img src="" alt="" /></div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="outer-card">
+              <div class="inner_card">
+                <div class="front"></div>
+                <div class="back"><img src="" alt="" /></div>
+              </div>
+            </div>
+          </td>
         </div>
-      </td>
-      <td>
-        <div class="outer-card">
-          <div class="inner_card">
-            <div class="front"></div>
-            <div class="back"><img src="" alt="" /></div>
-          </div>
+      </tr>
+      <tr>
+        <div id="container">
+          <td>
+            <div class="outer-card">
+              <div class="inner_card">
+                <div class="front"></div>
+                <div class="back"><img src="" alt="" /></div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="outer-card">
+              <div class="inner_card">
+                <div class="front"></div>
+                <div class="back"><img src="" alt="" /></div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="outer-card">
+              <div class="inner_card">
+                <div class="front"></div>
+                <div class="back"><img src="" alt="" /></div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="outer-card">
+              <div class="inner_card">
+                <div class="front"></div>
+                <div class="back"><img src="" alt="" /></div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="outer-card">
+              <div class="inner_card">
+                <div class="front"></div>
+                <div class="back"><img src="" alt="" /></div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="outer-card">
+              <div class="inner_card">
+                <div class="front"></div>
+                <div class="back"><img src="" alt="" /></div>
+              </div>
+            </div>
+          </td>
         </div>
-      </td>  
-       </tr>
-       <tr>
-        <td>
-        <div class="outer-card">
-          <div class="inner_card">
-            <div class="front"></div>
-            <div class="back"><img src="" alt="" /></div>
-          </div>
-        </div>
-      </td>
-      <td>
-        <div class="outer-card">
-          <div class="inner_card">
-            <div class="front"></div>
-            <div class="back"><img src="" alt="" /></div>
-          </div>
-        </div>
-      </td>  
+      </tr>
 
-        <td>
-         <div id="container">
-           <div class="outer-card">
-             <div class="inner_card">
-               <div class="front"></div>
-               <div class="back"><img src="" alt="" /></div>
-             </div>
-           </div>
-         </td>
-         <td>
-           <div class="outer-card">
-             <div class="inner_card">
-               <div class="front"></div>
-               <div class="back"><img src="" alt="" /></div>
-             </div>
-           </div>
-         </td>
-         <td>
-           <div class="outer-card">
-             <div class="inner_card">
-               <div class="front"></div>
-               <div class="back"><img src="" alt="" /></div>
-             </div>
-           </div>
-         </td>
-         <td>
-           <div class="outer-card">
-             <div class="inner_card">
-               <div class="front"></div>
-               <div class="back"><img src="" alt="" /></div>
-             </div>
-           </div>
-         </td> 
-         </tr>
-  </table>
+      <tr>
+        <div id="container">
+          <td>
+            <div class="outer-card">
+              <div class="inner_card">
+                <div class="front"></div>
+                <div class="back"><img src="" alt="" /></div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="outer-card">
+              <div class="inner_card">
+                <div class="front"></div>
+                <div class="back"><img src="" alt="" /></div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="outer-card">
+              <div class="inner_card">
+                <div class="front"></div>
+                <div class="back"><img src="" alt="" /></div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="outer-card">
+              <div class="inner_card">
+                <div class="front"></div>
+                <div class="back"><img src="" alt="" /></div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="outer-card">
+              <div class="inner_card">
+                <div class="front"></div>
+                <div class="back"><img src="" alt="" /></div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="outer-card">
+              <div class="inner_card">
+                <div class="front"></div>
+                <div class="back"><img src="" alt="" /></div>
+              </div>
+            </div>
+          </td>
+        </div>
+      </tr>
+      <tr>
+        <div id="container">
+          <td>
+            <div class="outer-card">
+              <div class="inner_card">
+                <div class="front"></div>
+                <div class="back"><img src="" alt="" /></div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="outer-card">
+              <div class="inner_card">
+                <div class="front"></div>
+                <div class="back"><img src="" alt="" /></div>
+              </div>
+            </div>
+          </td>
+
+          <td>
+            <div class="outer-card">
+              <div class="inner_card">
+                <div class="front"></div>
+                <div class="back"><img src="" alt="" /></div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="outer-card">
+              <div class="inner_card">
+                <div class="front"></div>
+                <div class="back"><img src="" alt="" /></div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="outer-card">
+              <div class="inner_card">
+                <div class="front"></div>
+                <div class="back"><img src="" alt="" /></div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="outer-card">
+              <div class="inner_card">
+                <div class="front"></div>
+                <div class="back"><img src="" alt="" /></div>
+              </div>
+            </div>
+          </td>
+        </div>
+      </tr>
+    </table>
 
     <div id="score_board">
-      <span
-        ><h1>
+      
+        <h1>
           SCORE:
-          <span id="score">0</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TIME:<span
-            id="time"
-            >01:02</span
-          >
-        </h1></span
-      >
+          <span id="score">0</span>
+        </h1>
+        <h1>TIME:<span id="time">01:02</span></h1>
+      
+     
       <!-- &nbsp; A non-breaking space is a space that will not break into a new line -->
       <br /><br />
-      <button id="reset" type="reset">Reset</button> 
-      <button  id="preview" type="button">Preview</button> 
-
-       
+      
+    </div>
+    <div class="btnsreset">
+      <button id="reset" type="reset">Reset</button>
+      <button id="preview" type="button">Preview</button>
     </div>
 
     <div id="custom-alert" class="alert-box">
       <span id="alert-message"></span>
     </div>
-     
-  <script>
 
-let level2=document.querySelector("#preview")
-      level2.addEventListener("click",()=>{
-        location.href="matchingcards2.html";
-      })
-    
+    <script>
+      let level2 = document.querySelector("#preview");
+      level2.addEventListener("click", () => {
+        location.href = "matchingcards2.html";
+      });
 
+      let cards = document.querySelectorAll(".inner_card");
+      let firstClick = false;
+      let counter = 0;
+      let cardpairs = [];
+      let score = 0;
+      let timeInterval;
 
-    let cards = document.querySelectorAll(".inner_card");
-let firstClick = false;
-let counter = 0;
-let cardpairs = [];
-let score = 0; 
-let timeInterval; 
+      cards.forEach((card) => {
+        card.state = "unclicked";
+        card.addEventListener("click", () => {
+          if (!firstClick) {
+            time();
+          }
+          firstClick = true;
 
-cards.forEach((card) => {
-    card.state = "unclicked";
-    card.addEventListener("click", () => {
-        if (!firstClick) {
-            time(); 
-        }
-        firstClick = true;
-
-        if (card.state === "unclicked") {
+          if (card.state === "unclicked") {
             card.style.transform = "rotateY(180deg)";
             card.state = "clicked";
             counter++;
             cardpairs.push(card);
             check();
-        } else if (card.state === "clicked") {
+          } else if (card.state === "clicked") {
             card.style.transform = "rotateY(0deg)";
             card.state = "unclicked";
             counter--;
             cardpairs = [];
-        }
-    });
-});
+          }
+        });
+      });
 
-shuffle();
+      shuffle();
 
-function check() {
-    if (counter == 2) {
-        if (
+      function check() {
+        if (counter == 2) {
+          if (
             cardpairs[0].querySelector("img").src ===
             cardpairs[1].querySelector("img").src
-        ) {
+          ) {
             matched();
-        } else {
+          } else {
             unmatched(cardpairs[0], cardpairs[1]);
+          }
         }
-    }
-}
+      }
 
-function matched() {
-    cardpairs[0].state = "blocked";
-    cardpairs[1].state = "blocked";
-    counter = 0;
-    cardpairs = [];
-    score++; 
+      function matched() {
+        cardpairs[0].state = "blocked";
+        cardpairs[1].state = "blocked";
+        counter = 0;
+        cardpairs = [];
+        score++;
 
-    document.querySelector("#score").innerHTML = score;
+        document.querySelector("#score").innerHTML = score;
+      }
 
+      function unmatched(x, y) {
+        setTimeout(() => {
+          x.style.transform = "rotateY(0deg)";
+          y.style.transform = "rotateY(0deg)";
+        }, 750);
+        cardpairs[0].state = "unclicked";
+        cardpairs[1].state = "unclicked";
+        counter = 0;
+        cardpairs = [];
+      }
 
-}
+      function showCustomAlert(message) {
+        const customAlert = document.getElementById("custom-alert");
+        const alertMessage = document.getElementById("alert-message");
+        alertMessage.innerText = message;
+        customAlert.classList.add("show");
+        setTimeout(() => {
+          customAlert.classList.remove("show");
+        }, 5000);
+      }
 
-function unmatched(x, y) {
-    setTimeout(() => {
-        x.style.transform = "rotateY(0deg)";
-        y.style.transform = "rotateY(0deg)";
-    }, 750);
-    cardpairs[0].state = "unclicked";
-    cardpairs[1].state = "unclicked";
-    counter = 0;
-    cardpairs = [];
-}
+      function blockCards() {
+        const cards = document.querySelectorAll(".inner_card");
+        cards.forEach((card) => {
+          card.classList.add("blocked"); // Add the blocked class to each card
+        });
+      }
 
-function showCustomAlert(message) {
-    const customAlert = document.getElementById("custom-alert");
-    const alertMessage = document.getElementById("alert-message");    
-    alertMessage.innerText = message;
-    customAlert.classList.add("show");    
-    setTimeout(() => {
-      customAlert.classList.remove("show");
-    }, 5000);
-}
+      function time() {
+        let secs = 2;
+        let min = 1;
 
-function blockCards() {
-    const cards = document.querySelectorAll(".inner_card");
-    cards.forEach(card => {
-        card.classList.add("blocked"); // Add the blocked class to each card
-    });
-}
-
-function time() {
-    let secs =2;
-    let min  = 1;
-
-    // Start the timer interval
-    timeInterval = setInterval(() => {
-        secs--;
-        if(secs <0){
-            secs = 59;// reset sec to  59
+        // Start the timer interval
+        timeInterval = setInterval(() => {
+          secs--;
+          if (secs < 0) {
+            secs = 59; // reset sec to  59
             min--;
-        }
-        let SS = secs < 10 ? `0${secs}` : `${secs}`;
-        let MM = min <10 ?`0${min}`:`${min}`;
-            document.querySelector("#time").innerHTML = `${MM}:${SS}`;
-        if ( min==0 && secs <=0 || score == 12 ) { 
-          clearInterval(timeInterval);
-          if(score == 12){ 
-            // Usage
-            showCustomAlert("Congratulations! You won the game...!"); 
-            document.querySelector("#preview").style.display="block"
+          }
+          let SS = secs < 10 ? `0${secs}` : `${secs}`;
+          let MM = min < 10 ? `0${min}` : `${min}`;
+          document.querySelector("#time").innerHTML = `${MM}:${SS}`;
+          if ((min == 0 && secs <= 0) || score == 12) {
+            clearInterval(timeInterval);
+            if (score == 12) {
+              // Usage
+              showCustomAlert("Congratulations! You won the game...!");
+              document.querySelector("#preview").style.display = "block";
+            } else {
+              showCustomAlert(
+                "Well, game don’t go as planned! Better luck next time..! "
+              );
             }
-            else  {
-              showCustomAlert("Well, game don’t go as planned! Better luck next time..! "); 
-            }
-            blockCards(); 
+            blockCards();
             time.state = "blocked";
           }
-          },1000);
-  }
-  // alert(`Seconds remaining: ${secs}, Current Score: ${score}`)
+        }, 1000);
+      }
+      // alert(`Seconds remaining: ${secs}, Current Score: ${score}`)
 
+      function shuffle() {
+        let images = document.querySelectorAll("img");
+        let srcs = [
+          "images/GIRL.webp",
+          "images/man.jpeg",
+          "images/vijay.jpeg",
+          "images/monkey.jpg",
+          "images/s_letter.jpg",
+          "images/skull.png",
+          "images/sun_rise.jpg",
+          "images/tamana.jpeg",
+          "images/praneeth.png",
+          "images/Speech-50.jpg",
+          "images/man.jpeg",
+          "images/ramcharan.jpeg",
+          "images/GIRL.webp",
+          "images/Speech-50.jpg",
+          "images/sun_rise.jpg",
+          "images/skull.png",
+          "images/kajal.jpeg",
+          "images/monkey.jpg",
+          "images/praneeth.png",
+          "images/s_letter.jpg",
+          "images/vijay.jpeg",
+          "images/tamana.jpeg",
+          "images/ramcharan.jpeg",
+          "images/kajal.jpeg",
+        ];
 
-function shuffle() {
-    let images = document.querySelectorAll("img");
-    let srcs = [
-        "images/GIRL.webp",
-        "images/man.jpeg",
-        "images/vijay.jpeg",
-        "images/monkey.jpg",
-        "images/s_letter.jpg",
-        "images/skull.png",
-        "images/sun_rise.jpg",
-        "images/tamana.jpeg",
-        "images/praneeth.png",
-        "images/Speech-50.jpg",
-        "images/man.jpeg",
-        "images/ramcharan.jpeg",
-        "images/GIRL.webp",
-        "images/Speech-50.jpg",
-        "images/sun_rise.jpg",
-        "images/skull.png",
-        "images/kajal.jpeg",
-        "images/monkey.jpg",
-        "images/praneeth.png",
-        "images/s_letter.jpg",
-        "images/vijay.jpeg",
-        "images/tamana.jpeg",
-        "images/ramcharan.jpeg",
-        "images/kajal.jpeg"
-    ];
+        for (let i = srcs.length - 1; i > 0; i--) {
+          let j = Math.floor(Math.random() * (i + 1));
+          let temp = srcs[i];
+          srcs[i] = srcs[j];
+          srcs[j] = temp;
+        }
+        for (let i = 0; i < images.length; i++) {
+          images[i].src = srcs[i];
+        }
+      }
+      let reset = document.getElementById("reset");
+      reset.addEventListener("click", resetgame);
 
-    for (let i = srcs.length - 1; i > 0; i--) {
-        let j = Math.floor(Math.random() * (i + 1));
-        let temp = srcs[i];
-        srcs[i] = srcs[j];
-        srcs[j] = temp;
-    }
-    for (let i = 0; i < images.length; i++) {
-        images[i].src = srcs[i];
-    }
-} 
-  let reset=document.getElementById("reset");
-  reset.addEventListener("click", resetgame)
+      function resetgame() {
+        clearInterval(timeInterval);
+        document.querySelector("#time").innerHTML = "01:02";
+        firstClick = false;
 
-  function resetgame(){
-    clearInterval(timeInterval);
-    document.querySelector("#time").innerHTML = "01:02";
-    firstClick=false;
+        score = 0;
+        document.querySelector("#score").innerHTML = `${score}`;
 
-    score = 0;
-    document.querySelector("#score").innerHTML = `${score}`
-    
-    cards.forEach((card)=>{
-      card.state = "unclicked";
-      card.style.transform = "rotateY(0deg)";
-      card.classList.remove("blocked")    // remove the blocked class to enable interaction
-    })
-  }
-
-
-  </script>
+        cards.forEach((card) => {
+          card.state = "unclicked";
+          card.style.transform = "rotateY(0deg)";
+          card.classList.remove("blocked"); // remove the blocked class to enable interaction
+        });
+      }
+    </script>
   </body>
 </html>
